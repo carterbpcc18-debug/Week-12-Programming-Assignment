@@ -58,6 +58,17 @@ function validatePromoCode(promo) {
     return /^SUMMER$/i.test(promo);
 }
 
+// Format Phone Number
+function formatPhoneNumber(phone) {
+    const phoneRegex = /^(\d{3})[-.]?(\d{3})[-.]?(\d{4})$/;
+
+    if (!phoneRegex.test(phone)) {
+        return null;
+    }
+
+    return phone.replace(phoneRegex, "($1) $2-$3");
+}
+
 // Test Name Validation
 console.log("NAME VALIDATION");
 
@@ -84,4 +95,11 @@ console.log("PROMO CODE VALIDATION");
 
 sampleUsers.forEach(user => {
     console.log(user.promoCode, validatePromoCode(user.promoCode));
+});
+
+// Test Phone Formatting
+console.log("PHONE NUMBER FORMATTING");
+
+sampleUsers.forEach(user => {
+    console.log(user.phone, formatPhoneNumber(user.phone));
 });
