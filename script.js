@@ -48,6 +48,16 @@ function validateUsername(username) {
     return /^\w{3,12}$/.test(username);
 }
 
+// Validate Phone
+function validatePhone(phone) {
+    return /^\d{3}[-.]?\d{3}[-.]?\d{4}$/.test(phone);
+}
+
+// Validate Promo Code
+function validatePromoCode(promo) {
+    return /^SUMMER$/i.test(promo);
+}
+
 // Test Name Validation
 console.log("NAME VALIDATION");
 
@@ -60,4 +70,18 @@ console.log("USERNAME VALIDATION");
 
 sampleUsers.forEach(user => {
     console.log(user.username, validateUsername(user.username));
+});
+
+// Test Phone Validation
+console.log("PHONE VALIDATION");
+
+sampleUsers.forEach(user => {
+    console.log(user.phone, validatePhone(user.phone));
+});
+
+// Test Promo Code Validation
+console.log("PROMO CODE VALIDATION");
+
+sampleUsers.forEach(user => {
+    console.log(user.promoCode, validatePromoCode(user.promoCode));
 });
