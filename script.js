@@ -69,37 +69,44 @@ function formatPhoneNumber(phone) {
     return phone.replace(phoneRegex, "($1) $2-$3");
 }
 
-// Test Name Validation
-console.log("NAME VALIDATION");
+// Process Registration
+function processRegistration(user) {
+    const errors = [];
+
+    if (!validateName(user.name)) {
+        errors.push("Invalid name");
+    }
+
+    if (!validateUsername(user.username)) {
+        errors.push("Invalid username");
+    }
+
+    if (!validatePhone(user.phone)) {
+        errors.push("Invalid phone");
+    }
+
+    if (errors.length > 0) {
+        return {
+            success: false,
+            errors: errors
+        };
+    }
+
+    return {
+        success: true,
+        data: {
+            name: user.name,
+            username: user.username,
+            phone: formatPhoneNumber(user.phone),
+            discountApplied: validatePromoCode(user.promoCode)
+        }
+    };
+}
+
+// Process All Sample Users
+console.log("REGISTRATION RESULTS");
 
 sampleUsers.forEach(user => {
-    console.log(user.name, validateName(user.name));
-});
-
-// Test Username Validation
-console.log("USERNAME VALIDATION");
-
-sampleUsers.forEach(user => {
-    console.log(user.username, validateUsername(user.username));
-});
-
-// Test Phone Validation
-console.log("PHONE VALIDATION");
-
-sampleUsers.forEach(user => {
-    console.log(user.phone, validatePhone(user.phone));
-});
-
-// Test Promo Code Validation
-console.log("PROMO CODE VALIDATION");
-
-sampleUsers.forEach(user => {
-    console.log(user.promoCode, validatePromoCode(user.promoCode));
-});
-
-// Test Phone Formatting
-console.log("PHONE NUMBER FORMATTING");
-
-sampleUsers.forEach(user => {
-    console.log(user.phone, formatPhoneNumber(user.phone));
+    const result = processRegistration(user);
+    console.log(user.name, result);
 });
