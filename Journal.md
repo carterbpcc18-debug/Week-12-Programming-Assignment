@@ -23,3 +23,9 @@ The main difference between test() and capturing groups is that test() only chec
 In this phase, I created the processRegistration() function to combine all of my previous validation and formatting functions. It checks the user's name, username, and phone number, and collects error messages if any required information is invalid. If everything passes, it returns the user's information with a formatted phone number and indicates whether the promotional discount was applied.
 
 Building and testing each regular expression separately made the final pipeline easier because I already knew that each individual function worked. Instead of repeating validation code, I could call the functions I had already created. This made the program more organized and easier to understand.
+
+## Phase 5: Validation & Reflection
+
+In this phase, I tested the completed program using the original sample users and added two additional edge cases. I tested a username containing an illegal special character and a phone number containing spaces instead of the accepted separators. Both were correctly rejected by the validation functions.
+
+I also tested the username length boundaries to make sure that 3 and 12 characters were accepted while 13 characters were rejected. I did not encounter any major unexpected problems during my final testing. This exercise helped me understand how regular expressions can make validating and formatting information easier. I also learned how anchors, character sets, quantifiers, flags, and capturing groups work together to process user information.

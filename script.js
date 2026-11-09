@@ -110,3 +110,34 @@ sampleUsers.forEach(user => {
     const result = processRegistration(user);
     console.log(user.name, result);
 });
+
+// Additional Edge Cases
+const edgeCases = [
+    {
+        name: "George Miller",
+        username: "george@123",
+        phone: "555-123-4567",
+        promoCode: "SUMMER"
+    },
+    {
+        name: "Hannah Smith",
+        username: "hannah_s",
+        phone: "555 123 4567",
+        promoCode: "WINTER"
+    }
+];
+
+// Test Additional Edge Cases
+console.log("EDGE CASE RESULTS");
+
+edgeCases.forEach(user => {
+    const result = processRegistration(user);
+    console.log(user.name, result);
+});
+
+// Test Username Length Boundaries
+console.log("USERNAME LENGTH TESTS");
+
+console.log("3 Characters:", validateUsername("abc"));
+console.log("12 Characters:", validateUsername("abcdefghijkl"));
+console.log("13 Characters:", validateUsername("abcdefghijklm"));
